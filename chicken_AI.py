@@ -69,7 +69,7 @@ tabs = [
 
 option_data = [
     {'icon': "🏠", 'label': HOME},
-    {'icon': "🖥️", 'label': APPLICATION}
+    {'icon': "🤖", 'label': APPLICATION}
 
 ]
 

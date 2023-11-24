@@ -146,7 +146,7 @@ left: 0;
 bottom: 0;
 background-color: transparent;
 margin-top: auto;
-color: #163172;
+color: #CD5C5C;
 padding: 24px;
 text-align: center;
 }
