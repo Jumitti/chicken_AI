@@ -18,7 +18,7 @@ ChickenAI provides a lighthearted exploration of generating scientific reviews t
 - **OpenAI Integration:** Certain aspects of the generation process are powered by OpenAI technology.
 ## Usage
 
-1. Go to the Streamlit application:
+1. Go to the Streamlit application: https://chickenai.streamlit.app/
 2. Enter a sentence or theme and explore the scientific review generation.
 
 ## License
