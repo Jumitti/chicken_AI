@@ -74,7 +74,6 @@ def application_page():
     if st.button("Hatch the Text 🐣", use_container_width=True, disabled=button):
 
         with st.status("Hatching... 🐣", expanded=True) as status:
-            '''
             random_delay = random.uniform(15, 30)
             st.write("Chicken Scrubbing...")
             progress_bar = st.progress(0.0)
@@ -129,7 +128,7 @@ def application_page():
             progress_bar = st.progress(0.0)
             for i in range(int(random_delay)):
                 time.sleep(random.uniform(0.75, 2))
-                progress_bar.progress((i + 1) / int(random_delay))'''
+                progress_bar.progress((i + 1) / int(random_delay))
 
             status.update(label="HATCHING ! 🐔", state="complete", expanded=False)
 
