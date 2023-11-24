@@ -1,2 +1,4 @@
 streamlit_lottie
 bs4
+hydralit_components
+streamlit_analytics
