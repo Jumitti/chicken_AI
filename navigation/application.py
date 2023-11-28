@@ -78,13 +78,6 @@ def application_page():
 
             understanding = chickenAI(user_input).understanding()
 
-            # random_delay = random.uniform(15, 30)
-            # st.write("Chicken Scrubbing...")
-            # progress_bar = st.progress(0.0)
-            # for i in range(int(random_delay)):
-            #     time.sleep(random.uniform(0.75, 2))
-            #     progress_bar.progress((i + 1) / int(random_delay))
-
             random_delay = random.uniform(15, 30)
             st.write("Egg-samination...")
             progress_bar = st.progress(0.0)
@@ -136,6 +129,7 @@ def application_page():
 
             status.update(label="HATCHING ! 🐔", state="complete", expanded=False)
 
+        
         st.link_button("Download your ChickenAI generation 🐔", 'https://r.sine.com/chicken')
 
         st.balloons()
