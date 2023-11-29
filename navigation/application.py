@@ -27,13 +27,17 @@ def CSL(search_citation):
 
 
 def application_page():
-    user_input = st.text_area("Enter your subject here:", height=200, placeholder=' Impact of Artificial Intelligence on the Evolution of Medical Technologies')
+    user_input = st.text_area("Enter your subject here:", height=200,
+                              placeholder=' Impact of Artificial Intelligence on the Evolution of Medical Technologies')
     if user_input:
         button = False
     else:
         button = True
 
-    bibliography_file = st.file_uploader("Upload Bibliography References (CSV from ZOTERO ONLY)", type=["csv"], help="Zotero only ! Open Zotero, right click on your folder, export as .csv ")
+    bibliography_file = st.file_uploader("Upload Bibliography References (CSV from ZOTERO ONLY)", type=["csv"],
+                                         help="Zotero only ! Open Zotero, right click on your folder, export as .csv ")
+    if not bibliography_file:
+        bibliography_file = None
 
     st.subheader("Generation Options")
 
@@ -46,10 +50,19 @@ def application_page():
 
     with tab3:
         include_plots = st.checkbox("Include Plots")
+        if include_plots:
+            plot = True
+        else:
+            plot = False
 
         include_equations = st.checkbox("Include Equations")
+        if include_equations:
+            equation = True
+        else:
+            equation = False
 
-        generation_mode = st.radio("Generation Mode", ["Strict", "Creative"], help='Strict: fit all your requests\n\nCreative: more freedom')
+        generation_mode = st.radio("Generation Mode", ["Strict", "Creative"],
+                                   help='Strict: fit all your requests\n\nCreative: more freedom')
 
     with tab2:
         writing_styles = [
@@ -71,65 +84,51 @@ def application_page():
         writing_style = st.selectbox("Writing Style", writing_styles, help='Default Scientific')
 
         citation_style = st_searchbox(CSL, key="Citation Style", label='Citation Style (default: Cell Research)')
+        if not citation_style:
+            citation_style = 'Cell Research'
 
     if st.button("Hatch the Text 🐣", use_container_width=True, disabled=button):
-
         with st.status("Hatching... 🐣", expanded=True) as status:
+            incubator = []
 
-            understanding = chickenAI(user_input).understanding()
+            understanding = chickenAI(user_input, biblio=bibliography_file).understanding_chicken()
 
-            random_delay = random.uniform(15, 30)
-            st.write("Egg-samination...")
-            progress_bar = st.progress(0.0)
-            for i in range(int(random_delay)):
-                time.sleep(random.uniform(0.75, 2))
-                progress_bar.progress((i + 1) / int(random_delay))
+            analysing = chickenAI(understanding).analysing_chicken()
 
-            random_delay = random.uniform(15, 30)
-            st.write("Cluck-tastic Style Chooser...")
-            progress_bar = st.progress(0.0)
-            for i in range(int(random_delay)):
-                time.sleep(random.uniform(0.75, 2))
-                progress_bar.progress((i + 1) / int(random_delay))
+            style = chickenAI(analysing,
+                              style=writing_style,
+                              modulation=generation_mode).style_chicken()
 
-            random_delay = random.uniform(15, 30)
-            st.write("Feathered Fancy Writery...")
-            progress_bar = st.progress(0.0)
-            for i in range(int(random_delay)):
-                time.sleep(random.uniform(0.75, 2))
-                progress_bar.progress((i + 1) / int(random_delay))
+            words = chickenAI(style,
+                              figures=str(max_figures),
+                              words=max_words,
+                              plot=include_plots,
+                              equation=include_equations).words_chicken()
 
-            random_delay = random.uniform(15, 30)
-            st.write("Bibliochick Integration...")
-            progress_bar = st.progress(0.0)
-            for i in range(int(random_delay)):
-                time.sleep(random.uniform(0.75, 2))
-                progress_bar.progress((i + 1) / int(random_delay))
+            biblio = chickenAI(words,
+                               citation=citation_style,
+                               biblio=bibliography_file).biblio_chicken()
 
-            random_delay = random.uniform(15, 30)
-            st.write("Cite-a-lot Chicken...")
-            progress_bar = st.progress(0.0)
-            for i in range(int(random_delay)):
-                time.sleep(random.uniform(0.75, 2))
-                progress_bar.progress((i + 1) / int(random_delay))
+            citation = chickenAI(biblio,
+                                 citation=citation_style,
+                                 biblio=bibliography_file).citation_chicken()
 
-            random_delay = random.uniform(15, 30)
-            st.write("Chicken Scrubbing...")
-            progress_bar = st.progress(0.0)
-            for i in range(int(random_delay)):
-                time.sleep(random.uniform(0.75, 2))
-                progress_bar.progress((i + 1) / int(random_delay))
+            refining = chickenAI(citation,
+                                 max_figures,
+                                 max_words,
+                                 writing_style,
+                                 citation_style,
+                                 generation_mode,
+                                 include_plots,
+                                 include_equations,
+                                 bibliography_file).refining_chicken()
 
-            random_delay = random.uniform(15, 30)
-            st.write("Plume Polishing")
-            progress_bar = st.progress(0.0)
-            for i in range(int(random_delay)):
-                time.sleep(random.uniform(0.75, 2))
-                progress_bar.progress((i + 1) / int(random_delay))
+            incubator.append([understanding, analysing, style, words, citation, refining])
+
+            golden_chicken = chickenAI.hatching(incubator)
 
             status.update(label="HATCHING ! 🐔", state="complete", expanded=False)
 
-        
-        st.link_button("Download your ChickenAI generation 🐔", 'https://r.sine.com/chicken')
+        st.link_button("Download your ChickenAI generation 🐔", golden_chicken)
 
         st.balloons()
