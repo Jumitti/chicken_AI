@@ -1,6 +1,6 @@
 import hydralit_components as hc
 import streamlit as st
-import streamlit_analytics
+# import streamlit_analytics
 from streamlit_modal import Modal
 import streamlit_lottie
 import time
@@ -93,7 +93,7 @@ for i in range(4):
     st.markdown('#')
 st.markdown(footer, unsafe_allow_html=True)
 
-streamlit_analytics.start_tracking()
+# streamlit_analytics.start_tracking()
 
 modal = Modal(key='ChickenAI', title="Terms of Use - ChickenAI", padding=50, max_width=900)
 
@@ -137,6 +137,6 @@ with st.sidebar:
         "Enter your research topic, and let ChickenAI hatch profound insights and visuals, all powered by cutting-edge AI!"
     )
 
-streamlit_analytics.stop_tracking()
-views = streamlit_analytics.main.counts["total_pageviews"]
-st.sidebar.markdown(f"Total connections 👨🏼‍💻: {int(views)}")
+# streamlit_analytics.stop_tracking()
+# views = streamlit_analytics.main.counts["total_pageviews"]
+# st.sidebar.markdown(f"Total connections 👨🏼‍💻: {int(views)}")
