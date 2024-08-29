@@ -2,3 +2,4 @@ streamlit_lottie
 bs4
 hydralit_components
 deprecation
+streamlit==1.34.0
