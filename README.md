@@ -1,5 +1,7 @@
 # ChickenAI - Scientific Review Generator
 
+[![Buy me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20Coffee-☕-FFDD00?style=flat-square)](https://www.buymeacoffee.com/Jumitti)
+
 ![ChickenAI Logo](utils/ChickenAI.png)
 
 ChickenAI is a Streamlit application that utilizes advanced technologies like deep learning, neural networks, and artificial intelligence to generate scientific reviews based on a given sentence or theme.
